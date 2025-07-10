@@ -825,7 +825,7 @@ header ul a:hover{
 }
 
 .close-icon{
-    font-size: 50px;
+    font-size: 35px;
     color: lightgray;
     padding-left: 10px;
     cursor: pointer;
@@ -843,7 +843,7 @@ header ul a:hover{
 .sidebar ul li a{
     text-decoration: none;
     color: lightgray;
-    font-size: 30px;
+    font-size: 15px;
     font-weight: 900;
     text-shadow:0 0 15px #4c4c4c;
 }
