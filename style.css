@@ -89,6 +89,9 @@ header ul a:hover{
     display: flex;
     gap: 40px;
     color: white;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
 }
 
 .box-icons p{
@@ -1241,6 +1244,7 @@ header ul a:hover{
 }
 a{
     text-decoration: none;
+    size: 50px;</a>
 }
 
 
