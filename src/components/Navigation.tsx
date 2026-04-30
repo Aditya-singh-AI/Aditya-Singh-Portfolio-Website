@@ -74,7 +74,13 @@ const Navigation = () => {
             <div className="flex items-center justify-between h-14">
               {/* Logo */}
               <motion.button
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                onClick={() => {
+                  if (window.innerWidth < 768) {
+                    setIsOpen(!isOpen);
+                  } else {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
                 className="relative group flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -135,15 +141,6 @@ const Navigation = () => {
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-violet-500/10" />
                 </motion.button>
               </div>
-
-              {/* Mobile Menu Button */}
-              <motion.button
-                className="md:hidden p-2 text-foreground"
-                onClick={() => setIsOpen(!isOpen)}
-                whileTap={{ scale: 0.9 }}
-              >
-                {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </motion.button>
             </div>
           </div>
         </div>
@@ -153,7 +150,7 @@ const Navigation = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 z-40 flex items-center justify-center"
+            className="fixed inset-0 z-40 flex items-center justify-center md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
