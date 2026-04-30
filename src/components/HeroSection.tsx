@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { ArrowDown, Github, Linkedin, Mail, Twitter, Sparkles, Code2, Palette, Zap } from "lucide-react";
 import MagneticButton from "./MagneticButton";
@@ -102,22 +102,17 @@ const MeshGradient = () => (
 const HeroSection = () => {
   const [loaded, setLoaded] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.5], [0, -80]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const imageRotate = useTransform(scrollYProgress, [0, 1], [0, 5]);
 
   const roleText = useTypewriter(["Full Stack Developer", "UI/UX Designer", "Creative Coder", "Problem Solver"], 80, 2500);
 
-  useEffect(() => { const t = setTimeout(() => setLoaded(true), 2000); return () => clearTimeout(t); }, []);
+  useEffect(() => { const t = setTimeout(() => setLoaded(true), 300); return () => clearTimeout(t); }, []);
 
   const downloadResume = () => {
     const link = document.createElement("a"); link.href = "/Resume Aditya Singh.pdf"; link.download = "Resume Aditya Singh.pdf";
     document.body.appendChild(link); link.click(); document.body.removeChild(link);
   };
 
-  const stagger = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 2.0 } } };
+  const stagger = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.3 } } };
   const letterReveal = { hidden: { y: "110%", opacity: 0, rotateX: 50 }, visible: { y: 0, opacity: 1, rotateX: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } };
   const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } };
 
@@ -127,15 +122,15 @@ const HeroSection = () => {
     <section ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden">
       <MeshGradient />
 
-      <motion.div className="relative z-10 max-w-7xl mx-auto w-full section-padding" style={{ opacity, y }}>
+      <motion.div className="relative z-10 max-w-7xl mx-auto w-full section-padding">
         <motion.div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center min-h-[80vh]" variants={stagger} initial="hidden" animate="visible">
           {/* Left — Text */}
           <div className="lg:col-span-7 space-y-7">
             <motion.div variants={fadeUp} className="flex items-center gap-3">
               <motion.div className="h-[1px] w-12 bg-gradient-to-r from-violet-400 to-transparent"
-                initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }} style={{ transformOrigin: "left" }} />
+                initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }} style={{ transformOrigin: "left" }} />
               <motion.span className="text-violet-400 text-sm tracking-[0.2em] uppercase" style={{ fontFamily: "var(--font-mono)" }}
-                initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 2.2, duration: 0.6 }}>
+                initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5, duration: 0.6 }}>
                 Portfolio 2025
               </motion.span>
             </motion.div>
@@ -158,7 +153,7 @@ const HeroSection = () => {
                       }}
                       initial={{ opacity: 0, y: 20, rotateZ: Math.random() * 10 - 5, scale: 0.8 }}
                       animate={loaded ? { opacity: 1, y: 0, rotateZ: 0, scale: 1 } : {}}
-                      transition={{ delay: 2.2 + i * 0.07, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ delay: 0.5 + i * 0.07, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                       whileHover={{ scale: 1.15, y: -5, transition: { duration: 0.2 } }}
                     >
                       {letter}
@@ -217,7 +212,7 @@ const HeroSection = () => {
 
           {/* Right — Profile + Stats */}
           <motion.div className="lg:col-span-5 flex flex-col items-center gap-8" variants={fadeUp}>
-            <motion.div className="relative" style={{ y: imageY, rotate: imageRotate }}>
+            <motion.div className="relative">
               <div className="absolute inset-0 rounded-3xl overflow-hidden" style={{
                 width: "calc(100% + 20px)", height: "calc(100% + 20px)", top: "-10px", left: "-10px"
               }}>
@@ -232,14 +227,14 @@ const HeroSection = () => {
               <motion.img src="/Hero image.png" alt="Aditya Singh"
                 className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl object-cover border-4 border-background z-10 cursor-pointer hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] transition-shadow duration-500"
                 initial={{ scale: 0.8, opacity: 0, filter: "blur(10px)" }}
-                animate={{ scale: 1, opacity: 1, filter: "blur(0px)", transition: { duration: 1, delay: 2.3, ease: [0.16, 1, 0.3, 1] } }}
+                animate={{ scale: 1, opacity: 1, filter: "blur(0px)", transition: { duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] } }}
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 transition={{ duration: 0.3, ease: "easeOut" }} />
               {[
-                { icon: Sparkles, x: "-5%", y: "-5%", delay: 2.8, color: "text-violet-400" },
-                { icon: Code2, x: "85%", y: "15%", delay: 3.0, color: "text-cyan-400" },
-                { icon: Palette, x: "-8%", y: "70%", delay: 3.2, color: "text-cyan-400" },
-                { icon: Zap, x: "88%", y: "80%", delay: 3.4, color: "text-amber-400" },
+                { icon: Sparkles, x: "-5%", y: "-5%", delay: 1.1, color: "text-violet-400" },
+                { icon: Code2, x: "85%", y: "15%", delay: 1.3, color: "text-cyan-400" },
+                { icon: Palette, x: "-8%", y: "70%", delay: 1.5, color: "text-cyan-400" },
+                { icon: Zap, x: "88%", y: "80%", delay: 1.7, color: "text-amber-400" },
               ].map((b, i) => (
                 <motion.div key={i} className="absolute w-10 h-10 rounded-xl glass-effect flex items-center justify-center z-20"
                   style={{ left: b.x, top: b.y }}
@@ -255,7 +250,7 @@ const HeroSection = () => {
               {[{ value: 10, suffix: "+", label: "Projects" }, { value: 2, suffix: "+", label: "Years" }, { value: 15, suffix: "+", label: "Tech Stack" }].map((stat, i) => (
                 <motion.div key={i} className="glass-effect rounded-xl p-3 group hover:border-violet-500/20 transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 2.8 + i * 0.12, duration: 0.6 }} whileHover={{ y: -4, boxShadow: "0 10px 30px rgba(139,92,246,0.1)" }}>
+                  transition={{ delay: 1.1 + i * 0.12, duration: 0.6 }} whileHover={{ y: -4, boxShadow: "0 10px 30px rgba(139,92,246,0.1)" }}>
                   <div className="text-2xl font-bold gradient-text"><AnimatedCounter target={stat.value} suffix={stat.suffix} /></div>
                   <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
                 </motion.div>
@@ -265,7 +260,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3.2 }}>
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>
           <div className="w-6 h-9 rounded-full border-2 border-violet-400/30 flex items-start justify-center p-1.5">
             <motion.div className="w-1 h-1.5 rounded-full bg-violet-400"
               animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }} />
