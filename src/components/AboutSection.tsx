@@ -87,7 +87,7 @@ const AboutSection = () => {
               <div className="absolute inset-0 animate-spin-slow" style={{ background: "conic-gradient(from 0deg, hsl(265,90%,65%), hsl(185,100%,55%), hsl(35,95%,60%), hsl(265,90%,65%))" }} />
               <div className="bg-card rounded-2xl p-8 relative">
                 <div className="text-center mb-6">
-                  <motion.img src="/ADDI PHOTO 1.jpg" alt="Aditya Singh"
+                  <motion.img src="/Hero image.png" alt="Aditya Singh"
                     className="w-28 h-28 rounded-full mx-auto mb-4 object-cover border-4 border-violet-500/20"
                     animate={{ boxShadow: ["0 0 20px rgba(139,92,246,0.2)", "0 0 40px rgba(139,92,246,0.3)", "0 0 20px rgba(139,92,246,0.2)"] }}
                     transition={{ duration: 3, repeat: Infinity }} whileHover={{ scale: 1.08 }} />

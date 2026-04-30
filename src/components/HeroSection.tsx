@@ -229,7 +229,7 @@ const HeroSection = () => {
               <div className="absolute inset-0 rounded-3xl blur-2xl opacity-30" style={{
                 background: "radial-gradient(circle, hsl(265 90% 65% / 0.4), transparent 70%)", width: "calc(100% + 40px)", height: "calc(100% + 40px)", top: "-20px", left: "-20px",
               }} />
-              <motion.img src="/ADDI PHOTO 1.jpg" alt="Aditya Singh"
+              <motion.img src="/Hero image.png" alt="Aditya Singh"
                 className="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl object-cover border-4 border-background z-10 cursor-pointer hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] transition-shadow duration-500"
                 initial={{ scale: 0.8, opacity: 0, filter: "blur(10px)" }}
                 animate={{ scale: 1, opacity: 1, filter: "blur(0px)", transition: { duration: 1, delay: 2.3, ease: [0.16, 1, 0.3, 1] } }}
