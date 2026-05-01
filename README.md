@@ -1,73 +1,107 @@
-# Welcome to your Lovable project
+# Aditya Singh — Premium Portfolio Website
 
-## Project info
+Welcome to the repository for my personal portfolio website! This project is a highly interactive, beautifully designed, and performant web application that showcases my skills, experience, and recent projects. It is built with modern web technologies and focuses on premium aesthetics, dynamic animations, and responsive design.
 
-**URL**: https://lovable.dev/projects/59603d00-2294-475c-8d76-bf28b78575d9
+![Portfolio Preview](/public/Hero%20image.png)
 
-## How can I edit this code?
+## 🚀 Live Demo
+Visit the live site: [Aditya Singh Portfolio](https://aditya-singh-portfolio-website.vercel.app/)
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## 🛠️ Tech Stack & Technologies
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/59603d00-2294-475c-8d76-bf28b78575d9) and start prompting.
+- **Framework**: [React.js](https://reactjs.org/) (via [Vite](https://vitejs.dev/))
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) & [Radix UI](https://www.radix-ui.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Routing**: React Router DOM
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🏗️ Project Structure
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+The project follows a modular, component-driven architecture for maintainability and scalability.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```text
+📦 Aditya-Singh-Portfolio-Website
+ ┣ 📂 public/              # Static assets (images, PDFs, SVGs)
+ ┣ 📂 src/                 # Main source code
+ ┃ ┣ 📂 components/        # Reusable UI and Section components
+ ┃ ┃ ┣ 📜 HeroSection.tsx      # Landing hero with mesh gradients & typewriter
+ ┃ ┃ ┣ 📜 AboutSection.tsx     # Personal details, stats, and background
+ ┃ ┃ ┣ 📜 SkillsSection.tsx    # Technical skills breakdown
+ ┃ ┃ ┣ 📜 ProjectsSection.tsx  # Featured and past projects with 3D tilt effects
+ ┃ ┃ ┣ 📜 ExperienceSection.tsx# Timeline of work history and education
+ ┃ ┃ ┣ 📜 ContactSection.tsx   # Interactive contact form and social links
+ ┃ ┃ ┣ 📜 Navigation.tsx       # Smart sticky navigation bar
+ ┃ ┃ ┣ 📜 CursorFollower.tsx   # Custom animated cursor for desktop
+ ┃ ┃ ┣ 📜 FloatingParticles.tsx# Ambient background canvas particles
+ ┃ ┃ ┗ 📂 ui/                  # Shadcn UI primitives (Buttons, Inputs, etc.)
+ ┃ ┣ 📂 pages/             # Route level components (Index.tsx, NotFound.tsx)
+ ┃ ┣ 📂 lib/               # Utility functions and helpers
+ ┃ ┣ 📂 hooks/             # Custom React hooks
+ ┃ ┣ 📜 App.tsx            # Root application component & routing
+ ┃ ┣ 📜 main.tsx           # React DOM rendering entry point
+ ┃ ┗ 📜 index.css          # Global styles, Tailwind directives, & keyframes
+ ┣ 📜 package.json         # Project metadata and dependencies
+ ┣ 📜 tailwind.config.ts   # Tailwind theme and plugin configuration
+ ┗ 📜 vite.config.ts       # Vite bundler configuration
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🌊 Application Flow & User Experience
 
-**Use GitHub Codespaces**
+The portfolio is designed as a seamless, single-page-like experience with smooth scrolling and engaging micro-interactions.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. **Immersive Entry**: The site begins with a sleek `LoadingScreen` that builds anticipation before revealing the main content.
+2. **Hero Section (`HeroSection.tsx`)**: Users are greeted with an animated mesh gradient background, a dynamic typewriter effect highlighting my roles, and quick access to my resume and social links.
+3. **About Me (`AboutSection.tsx`)**: Provides a quick overview of my background, location, and core philosophies (Clean Code, Creative Design, Performance), accompanied by animated glow cards.
+4. **Skills Breakdown (`SkillsSection.tsx`)**: My technical proficiencies are categorized (Frontend, Backend, Tools) with interactive, animated progress bars.
+5. **Project Showcase (`ProjectsSection.tsx`)**: Highlights my best work (e.g., DeepScanX, Badminton Tournament System). Features 3D tilt cards on hover and direct links to live demos and GitHub repositories.
+6. **Experience Timeline (`ExperienceSection.tsx`)**: A vertical timeline layout detailing my educational background and professional journey.
+7. **Contact & Footer (`ContactSection.tsx`, `Footer.tsx`)**: A fully functional contact form utilizing `react-hook-form` and `zod` for validation, along with final calls-to-action.
 
-## What technologies are used for this project?
+### 🎨 Visual Enhancements
+- **Custom Cursor**: The `CursorFollower.tsx` creates a magnetic, expanding custom cursor that reacts to interactive elements (disabled on mobile for performance).
+- **Background Particles**: `FloatingParticles.tsx` renders a lightweight canvas of connected nodes. (Intelligently disabled on mobile devices to prevent lag and battery drain).
+- **Scroll Progress**: A top progress bar tracks the user's journey down the page.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 💻 Running the Project Locally
 
-## How can I deploy this project?
+If you want to explore the code or run the portfolio locally, follow these steps:
 
-Simply open [Lovable](https://lovable.dev/projects/59603d00-2294-475c-8d76-bf28b78575d9) and click on Share -> Publish.
+**Prerequisites:** Ensure you have [Node.js](https://nodejs.org/) installed (v18+ recommended).
 
-## Can I connect a custom domain to my Lovable project?
+1. **Clone the repository**
+   ```sh
+   git clone https://github.com/Aditya-singh-AI/Aditya-Singh-Portfolio-Website.git
+   ```
 
-Yes, you can!
+2. **Navigate to the project directory**
+   ```sh
+   cd Aditya-Singh-Portfolio-Website
+   ```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+3. **Install dependencies**
+   ```sh
+   npm install
+   ```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+4. **Start the development server**
+   ```sh
+   npm run dev
+   ```
+
+5. **Open in browser**
+   Navigate to `http://localhost:5173` in your web browser.
+
+---
+
+## 📝 License
+Designed and developed by **Aditya Singh**. All rights reserved.
