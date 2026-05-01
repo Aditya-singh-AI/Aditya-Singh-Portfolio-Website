@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://aditya-singh-portfolio-website.vercel.app/sitemap.xml
