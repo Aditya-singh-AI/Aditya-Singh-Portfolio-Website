@@ -10,7 +10,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Github, label: "GitHub", href: "https://github.com/Aditya-singh-AI" },
-    { icon: Linkedin, label: "LinkedIn", href: "#" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/aditya-singh-aiml" },
     { icon: Twitter, label: "Twitter", href: "#" },
     { icon: Mail, label: "Email", href: "mailto:aditya.asb24@gmail.com" },
   ];

@@ -54,11 +54,14 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
               <div
                 className="absolute inset-0 animate-spin-slow"
                 style={{
-                  background: "conic-gradient(from 0deg, hsl(265, 90%, 65%), hsl(185, 100%, 55%), hsl(35, 95%, 60%), hsl(265, 90%, 65%))",
+                  background:
+                    "conic-gradient(from 0deg, hsl(265, 90%, 65%), hsl(185, 100%, 55%), hsl(35, 95%, 60%), hsl(265, 90%, 65%))",
                 }}
               />
               <div className="absolute inset-[2px] rounded-[14px] bg-[hsl(240,15%,4%)] flex items-center justify-center">
-                <span className="text-xl font-bold gradient-text font-display">AS</span>
+                <span className="text-xl font-bold gradient-text font-display">
+                  AS
+                </span>
               </div>
             </div>
           </motion.div>
