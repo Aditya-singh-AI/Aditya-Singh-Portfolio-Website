@@ -47,57 +47,76 @@ const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: str
 };
 
 // Animated Mesh Gradient Background
-const MeshGradient = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* Large morphing blobs */}
-    <motion.div
-      className="absolute w-[600px] h-[600px] rounded-full blur-[120px] opacity-[0.07]"
-      style={{ background: "hsl(265, 90%, 55%)", top: "10%", left: "5%" }}
-      animate={{ x: [0, 80, -40, 0], y: [0, -60, 40, 0], scale: [1, 1.15, 0.9, 1] }}
-      transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-    />
-    <motion.div
-      className="absolute w-[500px] h-[500px] rounded-full blur-[100px] opacity-[0.05]"
-      style={{ background: "hsl(185, 100%, 50%)", top: "30%", right: "0%" }}
-      animate={{ x: [0, -70, 50, 0], y: [0, 50, -30, 0], scale: [1, 0.85, 1.1, 1] }}
-      transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-    />
-    <motion.div
-      className="absolute w-[400px] h-[400px] rounded-full blur-[90px] opacity-[0.04]"
-      style={{ background: "hsl(35, 95%, 55%)", bottom: "10%", left: "40%" }}
-      animate={{ x: [0, 60, -80, 0], y: [0, -40, 60, 0], scale: [1, 1.2, 0.85, 1] }}
-      transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-    />
-    {/* Radial center glow */}
-    <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full"
-      style={{ background: "radial-gradient(circle, hsl(265 90% 65% / 0.04) 0%, transparent 60%)" }} />
-    {/* Decorative geometric shapes */}
-    <motion.div className="absolute top-[15%] right-[12%] w-20 h-20 border border-violet-500/10 rounded-2xl"
-      animate={{ rotate: 360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} />
-    <motion.div className="absolute bottom-[20%] left-[8%] w-14 h-14 border border-cyan-500/10 rounded-full"
-      animate={{ rotate: -360, scale: [1, 1.2, 1] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} />
-    <motion.div className="absolute top-[60%] right-[20%] w-3 h-3 bg-violet-400/20 rounded-full"
-      animate={{ y: [0, -30, 0], opacity: [0.2, 0.5, 0.2] }} transition={{ duration: 4, repeat: Infinity }} />
-    <motion.div className="absolute top-[30%] left-[30%] w-2 h-2 bg-cyan-400/20 rounded-full"
-      animate={{ y: [0, 20, 0], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 5, repeat: Infinity, delay: 1 }} />
-    <motion.div className="absolute bottom-[35%] right-[35%] w-2 h-2 bg-amber-400/15 rounded-full"
-      animate={{ y: [0, -15, 0], opacity: [0.2, 0.4, 0.2] }} transition={{ duration: 6, repeat: Infinity, delay: 2 }} />
-    {/* SVG cross lines */}
-    <svg className="absolute inset-0 w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
-      <line x1="50%" y1="0" x2="50%" y2="100%" stroke="url(#vFade)" strokeWidth="0.5" />
-      <line x1="0" y1="50%" x2="100%" y2="50%" stroke="url(#vFade)" strokeWidth="0.5" />
-      <line x1="20%" y1="0" x2="20%" y2="100%" stroke="url(#vFade)" strokeWidth="0.3" strokeDasharray="8 16" />
-      <line x1="80%" y1="0" x2="80%" y2="100%" stroke="url(#vFade)" strokeWidth="0.3" strokeDasharray="8 16" />
-      <defs>
-        <linearGradient id="vFade" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="transparent" />
-          <stop offset="50%" stopColor="rgba(167,139,250,0.25)" />
-          <stop offset="100%" stopColor="transparent" />
-        </linearGradient>
-      </defs>
-    </svg>
-  </div>
-);
+const MeshGradient = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+          style={{ background: "radial-gradient(circle, hsl(265 90% 65% / 0.08) 0%, transparent 60%)" }} />
+      </div>
+    );
+  }
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Large morphing blobs */}
+      <motion.div
+        className="absolute w-[600px] h-[600px] rounded-full blur-[120px] opacity-[0.07]"
+        style={{ background: "hsl(265, 90%, 55%)", top: "10%", left: "5%" }}
+        animate={{ x: [0, 80, -40, 0], y: [0, -60, 40, 0], scale: [1, 1.15, 0.9, 1] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute w-[500px] h-[500px] rounded-full blur-[100px] opacity-[0.05]"
+        style={{ background: "hsl(185, 100%, 50%)", top: "30%", right: "0%" }}
+        animate={{ x: [0, -70, 50, 0], y: [0, 50, -30, 0], scale: [1, 0.85, 1.1, 1] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      />
+      <motion.div
+        className="absolute w-[400px] h-[400px] rounded-full blur-[90px] opacity-[0.04]"
+        style={{ background: "hsl(35, 95%, 55%)", bottom: "10%", left: "40%" }}
+        animate={{ x: [0, 60, -80, 0], y: [0, -40, 60, 0], scale: [1, 1.2, 0.85, 1] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+      />
+      {/* Radial center glow */}
+      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full"
+        style={{ background: "radial-gradient(circle, hsl(265 90% 65% / 0.04) 0%, transparent 60%)" }} />
+      {/* Decorative geometric shapes */}
+      <motion.div className="absolute top-[15%] right-[12%] w-20 h-20 border border-violet-500/10 rounded-2xl"
+        animate={{ rotate: 360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} />
+      <motion.div className="absolute bottom-[20%] left-[8%] w-14 h-14 border border-cyan-500/10 rounded-full"
+        animate={{ rotate: -360, scale: [1, 1.2, 1] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} />
+      <motion.div className="absolute top-[60%] right-[20%] w-3 h-3 bg-violet-400/20 rounded-full"
+        animate={{ y: [0, -30, 0], opacity: [0.2, 0.5, 0.2] }} transition={{ duration: 4, repeat: Infinity }} />
+      <motion.div className="absolute top-[30%] left-[30%] w-2 h-2 bg-cyan-400/20 rounded-full"
+        animate={{ y: [0, 20, 0], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 5, repeat: Infinity, delay: 1 }} />
+      <motion.div className="absolute bottom-[35%] right-[35%] w-2 h-2 bg-amber-400/15 rounded-full"
+        animate={{ y: [0, -15, 0], opacity: [0.2, 0.4, 0.2] }} transition={{ duration: 6, repeat: Infinity, delay: 2 }} />
+      {/* SVG cross lines */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.06]" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50%" y1="0" x2="50%" y2="100%" stroke="url(#vFade)" strokeWidth="0.5" />
+        <line x1="0" y1="50%" x2="100%" y2="50%" stroke="url(#vFade)" strokeWidth="0.5" />
+        <line x1="20%" y1="0" x2="20%" y2="100%" stroke="url(#vFade)" strokeWidth="0.3" strokeDasharray="8 16" />
+        <line x1="80%" y1="0" x2="80%" y2="100%" stroke="url(#vFade)" strokeWidth="0.3" strokeDasharray="8 16" />
+        <defs>
+          <linearGradient id="vFade" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="transparent" />
+            <stop offset="50%" stopColor="rgba(167,139,250,0.25)" />
+            <stop offset="100%" stopColor="transparent" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  );
+};
 
 const HeroSection = () => {
   const [loaded, setLoaded] = useState(false);

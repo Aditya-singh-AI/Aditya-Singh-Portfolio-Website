@@ -11,7 +11,7 @@ const FloatingParticles = () => {
     if (!ctx) return;
     let animId: number;
     const isMobile = window.innerWidth < 768;
-    const particleCount = isMobile ? 25 : 45;
+    const particleCount = isMobile ? 0 : 45;
     const particles: { x: number; y: number; vx: number; vy: number; r: number; o: number; color: string }[] = [];
 
     const colors = [
@@ -26,6 +26,12 @@ const FloatingParticles = () => {
     };
     resize();
     window.addEventListener("resize", resize);
+
+    if (particleCount === 0) {
+      return () => {
+        window.removeEventListener("resize", resize);
+      };
+    }
 
     for (let i = 0; i < particleCount; i++) {
       const colorWeight = Math.random();

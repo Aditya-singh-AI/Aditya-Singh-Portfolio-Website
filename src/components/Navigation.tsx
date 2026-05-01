@@ -55,7 +55,7 @@ const Navigation = () => {
   return (
     <>
       <motion.nav
-        className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl"
+        className="hidden md:block fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl"
         initial={{ y: -100, opacity: 0 }}
         animate={{
           y: hidden ? -100 : 0,
